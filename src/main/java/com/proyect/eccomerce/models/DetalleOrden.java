@@ -1,11 +1,24 @@
 package com.proyect.eccomerce.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "detalles")
 public class DetalleOrden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nombre;
     private double cantidad;
     private double precio;
     private double total;
+
+    /*relacion con Orden*/
+    @OneToOne
+    private Orden orden;
+    /*relacion con Producto-en producto no hace falta hacer la relacion porque no es nesesario saber el detalle de la orden, por eso no se hace un capo de eso */
+    @OneToOne
+    private Producto producto;
 
     public DetalleOrden() {
     }
@@ -66,5 +79,21 @@ public class DetalleOrden {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

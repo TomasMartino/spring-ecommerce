@@ -1,6 +1,14 @@
 package com.proyect.eccomerce.models;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "productos")
 public class Producto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String nombre;
     private String descripcion;
@@ -8,12 +16,17 @@ public class Producto {
     private String precio;
     private String cantidad;
 
-    public Producto(String nombre, String descripcion, String imagen, String precio, String cantidad) {
+    /*relacion con usuario*/
+    @ManyToOne
+    private Usuario usuario;
+
+    public Producto(String nombre, String descripcion, String imagen, String precio, String cantidad, Usuario usuario) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.usuario = usuario;
     }
 
     public Producto() {
@@ -78,4 +91,13 @@ public class Producto {
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
 }
