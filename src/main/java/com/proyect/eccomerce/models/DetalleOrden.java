@@ -17,7 +17,7 @@ public class DetalleOrden {
     @OneToOne
     private Orden orden;
     /*relacion con Producto-en producto no hace falta hacer la relacion porque no es nesesario saber el detalle de la orden, por eso no se hace un capo de eso */
-    @OneToOne
+    @ManyToOne
     private Producto producto;
 
     public DetalleOrden() {

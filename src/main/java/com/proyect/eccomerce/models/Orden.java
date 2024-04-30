@@ -14,7 +14,7 @@ public class Orden {
     private Date fechaRecibida;
     private double total;
     /*relacion con usuario*/
-    @OneToOne
+    @ManyToOne
     private Usuario usuario;
     /*relacion con DetalleOrden*/
     @OneToOne(mappedBy = "orden")

@@ -23,7 +23,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Producto> productos;
     /*relacion con Orden*/
-    @OneToOne(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<Orden> ordenes;
 
 
